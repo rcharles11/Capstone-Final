@@ -1,0 +1,17 @@
+labels = list()
+train = list()
+for i in range(len(dir_list)):
+    if '-' in dir_list[i]:
+        temp1 = dir_list[i].split('-')[0]
+        labels.append(temp1)
+    else:
+        temp1 = dir_list[i].split('_')[0]
+        labels.append(temp1)
+    
+    imgPath = os.path.join(path, dir_list[i])
+    img = im.open(imgPath)
+    img = img.resize((150,150))
+    temp2 = np.array(img)
+    train.append(temp2)
+    if (i % 100 == 0) or i == (len(dir_list) - 1):
+        print(i)
